@@ -1,0 +1,89 @@
+/* reset */
+html,
+body {
+	padding: 0;
+	margin: 0;
+	height: 100%;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+header {
+	/* flex: 0 1 auto; */
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	padding: 15px 20px;
+	font-family: 'Montserrat', sans-serif;
+	background-color: rgb(18, 15, 209);
+	color: rgb(255, 175, 151);
+}
+h1 {
+	font-size: 1.8em;
+	font-weight: 100;
+	cursor: pointer;
+	user-select: none;
+}
+ul {
+	font-size: 1em;
+	list-style: none;
+}
+li {
+	display: inline-block;
+	margin-left: 15px;
+	cursor: pointer;
+	user-select: none;
+}
+
+section {
+	flex: 1 1 auto;
+	max-width: 90%;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.bg-card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.bg-card h2 {
+	font-size: 1.7em;
+	font-family: 'Montserrat', sans-serif;
+}
+.bg-card p {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1.2em;
+}
+
+#control-bar {
+	flex: 0 1 auto;
+	background-color: rgb(43, 39, 228);
+	display: flex;
+	justify-content: center;
+}
+/* barra de controle, contem um botão no inicio,
+ mas depois de clicar no botão a barra sobe e fica 
+ de baixo da header, com isso ela passa a ter um 
+ texto e um input */
+#control-bar button {
+	font-family: 'Montserrat', sans-serif;
+	margin: 40px;
+	padding: 15px;
+	border: none;
+	border-radius: 32px;
+	color: rgb(43, 39, 228);
+	background-color: #fff;
+	font-size: 1.2em;
+	font-weight: bold;
+	box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.2);
+	cursor: pointer;
+}
+
+.div-image {
+}
