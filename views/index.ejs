@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:700|Open+Sans" rel="stylesheet">
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="css/style.css">
   <title>Explore the world</title>
 </head>
 
@@ -39,7 +39,16 @@
     </div>
   </section>
 
-  <div id="control-bar">
+  <div id="search-bar">
+    <form action="/" method="post">
+      <div>
+          <input type="text" placeholder="Enter anything...">
+          <input type="submit" value="">
+      </div>
+    </form>
+  </div>
+
+  <div id="button-bar">
     <button>
       Start now
     </button>
@@ -47,7 +56,6 @@
 
   <div id="div-image"></div>
 
-  <script src="./main.js"></script>
 </body>
 
 </html>
