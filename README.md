@@ -44,4 +44,5 @@ localhost:3333
 
 ## Acknowledgments
 
-Favicon made by Gregor Cresnar from https://www.flaticon.com
+Favicon made by Gregor Cresnar from https://www.flaticon.com/authors/gregor-cresnar
+Search icon made by Dave Gandy from https://www.flaticon.com/authors/dave-gandy
