@@ -12,7 +12,6 @@ body {
 }
 
 header {
-	/* flex: 0 1 auto; */
 	display: flex;
 	align-items: baseline;
 	justify-content: space-between;
@@ -20,6 +19,8 @@ header {
 	font-family: 'Montserrat', sans-serif;
 	background-color: rgb(18, 15, 209);
 	color: rgb(255, 175, 151);
+	z-index: 2;
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 h1 {
 	font-size: 1.8em;
@@ -60,32 +61,55 @@ section {
 	font-size: 1.2em;
 }
 
-#search-bar {
-	display: none;
-}
-
-#button-bar {
+#bg-action {
 	flex: 0 1 auto;
 	background-color: rgb(43, 39, 228);
 	display: flex;
 	justify-content: center;
 }
-/* barra de controle, contem um botão no inicio,
- mas depois de clicar no botão a barra sobe e fica 
- de baixo da header, com isso ela passa a ter um 
- texto e um input */
-#button-bar button {
-	font-family: 'Montserrat', sans-serif;
+.container-action{
 	margin: 40px;
 	padding: 15px;
-	border: none;
-	border-radius: 32px;
-	color: rgb(43, 39, 228);
 	background-color: #fff;
-	font-size: 1.2em;
-	font-weight: bold;
+	border-radius: 32px;
 	box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.2);
 	cursor: pointer;
+}
+.container-action button {
+	font-family: 'Montserrat', sans-serif;
+	background-color: #fff;
+	border: none;
+	color: rgb(43, 39, 228);
+	font-size: 1.2em;
+	font-weight: bold;
+	cursor: pointer;	
+}
+.container-action button:focus {
+	outline: none;
+}
+.container-action form {
+	display: none;
+}
+form div{
+	display: flex;
+}
+#input-search {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 1em;
+	border: none;
+	cursor: text;
+	color: rgb(43, 39, 228);
+}
+#input-search:focus{
+	outline: none;
+}
+#input-submit {
+	border: none;
+	cursor: pointer;
+	outline: none;
+	background: url(../images/search.png);
+	width: 24px;
+	height: 24px;
 }
 
 .div-image {
