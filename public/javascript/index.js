@@ -1,16 +1,32 @@
-const mainBody = document.querySelector('section');
+const startSection = document.querySelector('section');
 const actionContainer = document.querySelector('.container-action');
+const startButton = document.getElementById('btn-start');
+const containerSearch = document.getElementById('container-search');
 
-const actionBarButton = actionContainer.querySelector('button');
-const form = actionContainer.querySelector('form');
+const inputSearch = document.getElementById('input-search');
+const btnSearch = document.getElementById('btn-search');
 
-actionContainer.addEventListener('click', () => {
-	actionBarTransition();
+let searchContent = null;
+let xhr = new XMLHttpRequest();
+
+actionContainer.addEventListener('click', startButtonClick);
+
+btnSearch.addEventListener('click', () => {
+	event.preventDefault();
+
+	xhr.open('POST', '/');
+	xhr.setRequestHeader('Content-Type', 'application/json');
+	xhr.send(JSON.stringify({ value: inputSearch.value }));
 });
 
-function actionBarTransition() {
-	mainBody.style.display = 'none';
-  actionBarButton.style.display = 'none';
-  form.style.display = 'block';
-  actionContainer.style.cursor = 'default';
+function startButtonClick() {
+	// start section desaparece
+	startSection.style.display = 'none';
+	// start button desaparece
+	startButton.style.display = 'none';
+	// container de pesquisa aparece
+	containerSearch.style.display = 'flex';
+
+	actionContainer.style.cursor = 'default';
+	actionContainer.removeEventListener('click', startButtonClick);
 }
