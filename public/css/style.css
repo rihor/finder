@@ -67,7 +67,7 @@ section {
 	display: flex;
 	justify-content: center;
 }
-.container-action{
+.container-action {
 	margin: 40px;
 	padding: 15px;
 	background-color: #fff;
@@ -75,23 +75,20 @@ section {
 	box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.2);
 	cursor: pointer;
 }
-.container-action button {
+#btn-start {
 	font-family: 'Montserrat', sans-serif;
 	background-color: #fff;
 	border: none;
 	color: rgb(43, 39, 228);
 	font-size: 1.2em;
 	font-weight: bold;
-	cursor: pointer;	
+	cursor: pointer;
 }
-.container-action button:focus {
+#btn-start:focus {
 	outline: none;
 }
-.container-action form {
+#container-search {
 	display: none;
-}
-form div{
-	display: flex;
 }
 #input-search {
 	font-family: 'Montserrat', sans-serif;
@@ -100,10 +97,10 @@ form div{
 	cursor: text;
 	color: rgb(43, 39, 228);
 }
-#input-search:focus{
+#input-search:focus {
 	outline: none;
 }
-#input-submit {
+#btn-search {
 	border: none;
 	cursor: pointer;
 	outline: none;
