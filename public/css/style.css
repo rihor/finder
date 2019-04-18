@@ -11,18 +11,18 @@ body {
 	height: 100%;
 }
 
-header {	
+header {
 	background-color: rgb(18, 15, 209);
 	z-index: 2;
 	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
-.container{
+.container {
 	max-width: 90%;
 	margin: 0 auto;
 	display: flex;
 	align-items: baseline;
 	justify-content: space-between;
-	padding: 15px 20px;
+	padding: 10px 15px;
 	font-family: 'Montserrat', sans-serif;
 	color: rgb(255, 175, 151);
 }
@@ -43,7 +43,7 @@ li {
 	user-select: none;
 }
 /* expande para cobrir todo o espaço sobrando */
-section {
+.welcome-section-style {
 	flex: 1 1 auto;
 	max-width: 90%;
 	margin: 0 auto;
@@ -51,16 +51,16 @@ section {
 	flex-direction: column;
 	justify-content: center;
 }
-.bg-card {
+.welcome {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
-.bg-card h2 {
+.welcome h2 {
 	font-size: 1.7em;
 	font-family: 'Montserrat', sans-serif;
 }
-.bg-card p {
+.welcome p {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 1.2em;
 }
@@ -72,14 +72,14 @@ section {
 	justify-content: center;
 }
 .container-action {
-	margin: 40px;
+	margin: 20px;
 	padding: 15px;
 	background-color: #fff;
 	border-radius: 32px;
 	box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.2);
 	cursor: pointer;
 }
-#btn-start {
+.btn-start {
 	font-family: 'Montserrat', sans-serif;
 	background-color: #fff;
 	border: none;
@@ -88,11 +88,11 @@ section {
 	font-weight: bold;
 	cursor: pointer;
 }
-#btn-start:focus {
+.btn-start:focus {
 	outline: none;
 }
-#container-search {
-	display: none;
+.container-search {
+	display: flex;
 }
 #input-search {
 	font-family: 'Montserrat', sans-serif;
@@ -113,6 +113,45 @@ section {
 	height: 24px;
 }
 
-.div-image {
+
+.hidden {
 	display: none;
+}
+.bg-card {
+	margin: 15px;
+	border-radius: 16px;
+	box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.2);
+}
+.bg-info {
+	background-color: #fff;
+}
+.bg-info h3 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: bold;
+	text-align: center;
+	margin-top: 20px;
+}
+.bg-info p {
+	margin: 30px 15px;	
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1em;	
+	text-indent: 1.25em;	
+	line-height: 1.5em;
+}
+.bg-image {
+	background-color: #fff;
+	width: 1300px;
+	height: 350px;
+}
+
+.display{
+	display: flex;
+	flex: 1 1 auto;
+}
+
+/* quebra o display info em duas linhas */
+@media only screen and (max-width: 600px) {
+  .display{
+		flex-wrap: wrap;
+	}
 }

@@ -1,6 +1,7 @@
-const startSection = document.querySelector('section');
+const welcomeSection = document.getElementById('welcome-section');
+const infoSection = document.getElementById('info-section');
 const actionContainer = document.querySelector('.container-action');
-const startButton = document.getElementById('btn-start');
+const startButton = document.querySelector('.btn-start');
 const containerSearch = document.getElementById('container-search');
 
 const inputSearch = document.getElementById('input-search');
@@ -14,19 +15,34 @@ actionContainer.addEventListener('click', startButtonClick);
 btnSearch.addEventListener('click', () => {
 	event.preventDefault();
 
+	// envia a pesquisa para o backend
 	xhr.open('POST', '/');
 	xhr.setRequestHeader('Content-Type', 'application/json');
 	xhr.send(JSON.stringify({ value: inputSearch.value }));
 });
 
 function startButtonClick() {
+	closeWelcomeSection();
+	changeSearchContainer();
+	showInfoSection();
+	actionContainer.removeEventListener('click', startButtonClick);
+}
+
+function closeWelcomeSection() {
 	// start section desaparece
-	startSection.style.display = 'none';
+	welcomeSection.style.display = 'none';
+}
+
+function changeSearchContainer() {
 	// start button desaparece
-	startButton.style.display = 'none';
+	startButton.classList = 'hidden';
 	// container de pesquisa aparece
-	containerSearch.style.display = 'flex';
+	containerSearch.classList = 'display';
 
 	actionContainer.style.cursor = 'default';
-	actionContainer.removeEventListener('click', startButtonClick);
+}
+
+function showInfoSection() {
+	// container de informação aparece
+	infoSection.classList = 'display';
 }
