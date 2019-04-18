@@ -1,5 +1,5 @@
-const googleSearchCredentials = require('./credentials/google-search.json');
-const google = require('googleapis').google;
+const googleSearchCredentials = require('../credentials/google-search.json.js');
+const google = require('../node_modules/googleapis').google;
 const customSearch = google.customsearch('v1');
 
 const content = require('./content');
