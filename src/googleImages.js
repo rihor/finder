@@ -12,6 +12,9 @@ async function getGoogleImages(query) {
 
 	console.dir(content, { depth: null });
 
+	// retorna uma promise
+	return content;
+
 	async function fetchGoogleAndReturnImagesLink(query) {
 		const response = await customSearch.cse.list({
 			auth: googleSearchCredentials.apiKey,
@@ -22,9 +25,9 @@ async function getGoogleImages(query) {
 			num: 3,
 		});
 
-		let items = response.data.items;
+		const items = response.data.items;
 
-		if(items == undefined){
+		if (items == undefined) {
 			return items;
 		}
 

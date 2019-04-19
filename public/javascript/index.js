@@ -12,14 +12,49 @@ let xhr = new XMLHttpRequest();
 
 actionContainer.addEventListener('click', startButtonClick);
 
+// determina uso de json
+const jsonHeaders = new Headers({ 'Content-Type': 'application/json' });
+
 btnSearch.addEventListener('click', () => {
 	event.preventDefault();
 
-	// envia a pesquisa para o backend
-	xhr.open('POST', '/');
-	xhr.setRequestHeader('Content-Type', 'application/json');
-	xhr.send(JSON.stringify({ value: inputSearch.value }));
+	// texto da pesquisa passado para JSON
+	const searchInputValue = {
+		value: inputSearch.value,
+	};
+
+	// envia o texto para o servidor
+	fetch('/', {
+		method: 'POST',
+		headers: jsonHeaders,
+		body: JSON.stringify(searchInputValue),
+	})
+		.then(response => {
+			// pegara o resultado da pesquisa apenas depois dela acabar
+			if (response.status == 200) {
+				getContentFromServer();
+			}
+		})
+		.catch(error => {
+			console.warn('Failed sending content to search!: ', error);
+		});
 });
+
+// pega o objeto com o resultado da pesquisa do servidor
+function getContentFromServer() {
+	fetch('/result', {
+		method: 'GET',
+		headers: jsonHeaders,
+	})
+		.then(res => res.json())
+		.then(result => {
+			// obtido o resultado da pesquisa
+			console.log(result);
+		})
+		.catch(error => {
+			console.error('Failed retrieving content!: ', error);
+		});
+}
 
 function startButtonClick() {
 	closeWelcomeSection();
