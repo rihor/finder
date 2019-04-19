@@ -22,8 +22,14 @@ async function getGoogleImages(query) {
 			num: 3,
 		});
 
+		let items = response.data.items;
+
+		if(items == undefined){
+			return items;
+		}
+
 		// cria um array com os links achados
-		const imagesUrl = response.data.items.map(item => {
+		const imagesUrl = items.map(item => {
 			return item.link;
 		});
 
