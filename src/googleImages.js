@@ -21,7 +21,7 @@ async function getGoogleImages(query) {
 			cx: googleSearchCredentials.searchEngineId,
 			q: query,
 			searchType: 'image',
-			imgSize: 'huge',
+			imgSize: 'xlarge',
 			num: 3,
 		});
 
