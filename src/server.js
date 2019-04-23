@@ -1,5 +1,6 @@
 const express = require('../node_modules/express');
 const bodyParser = require('../node_modules/body-parser');
+const path = require('path');
 
 const app = express();
 const content = require('../src/content');
@@ -7,6 +8,8 @@ const content = require('../src/content');
 app.use(express.static('public'));
 app.use(bodyParser.json());
 app.set('view engine', 'ejs');
+// define a pasta onde está as views
+app.set('views', path.join(__dirname, '../public/views'));
 
 app.get('/', (req, res) => {
 	res.render('index');
