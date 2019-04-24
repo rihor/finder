@@ -25,7 +25,8 @@ header {
 	display: flex;
 	align-items: baseline;
 	justify-content: space-between;
-	padding: 10px 15px;
+	align-items: center;
+	padding: 0px 10px;
 	font-family: 'Montserrat', sans-serif;
 	color: rgb(255, 175, 151);
 }
@@ -154,9 +155,11 @@ li {
 }
 
 img {
-	max-width: 100%;
-	max-height: 100%;
-	object-fit: fill;
+	max-width: 500px;	
+	max-height: 500px;
+	min-width: 500px;
+	min-height: 500px;
+	border-radius: 16px;	
 }
 #result-img-search {
 	position: relative;
