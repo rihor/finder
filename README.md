@@ -42,7 +42,7 @@ Now that you have the project running.
 Just type in your browser:
 
 ```
-localhost:3333
+localhost:3000
 ```
 
 ## Acknowledgments
