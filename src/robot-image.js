@@ -1,4 +1,4 @@
-const googleSearchCredentials = require('../credentials/google-search.json');
+const apiKeys = require('../credentials/apiKeys.json');
 const google = require('googleapis').google;
 const customSearch = google.customsearch('v1');
 
@@ -9,8 +9,8 @@ async function getGoogleImages(content) {
 
 	async function fetchGoogleAndReturnImagesLink({ query }) {
 		const response = await customSearch.cse.list({
-			auth: googleSearchCredentials.apiKey,
-			cx: googleSearchCredentials.searchEngineId,
+			auth: apiKeys.google,
+			cx: apiKeys.searchEngineId,
 			q: query,
 			searchType: 'image',
 			num: 5,
