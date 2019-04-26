@@ -21,7 +21,7 @@ routes.post('/', async (req, res) => {
   await getGoogleImages(content);
   await getWikiText(content);
 
-	// console.log(content);
+	console.log(content);
 
 	res.send();
 });
