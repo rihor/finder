@@ -16,12 +16,12 @@ routes.post('/', async (req, res) => {
   content.query = req.body.value;
   
 	const getGoogleImages = require('./robot-image');
-	// const getWikiText = require('./robot-text');
+	const getWikiText = require('./robot-text');
   
   await getGoogleImages(content);
-  // await getWikiText(content);
+  await getWikiText(content);
 
-	console.log(content);
+	// console.log(content);
 
 	res.send();
 });
