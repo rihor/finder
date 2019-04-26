@@ -1,21 +1,13 @@
 const googleSearchCredentials = require('../credentials/google-search.json');
-const google = require('../node_modules/googleapis').google;
+const google = require('googleapis').google;
 const customSearch = google.customsearch('v1');
 
-const content = require('./content');
+async function getGoogleImages(content) {
+	const imagesArray = await fetchGoogleAndReturnImagesLink(content);
 
-async function getGoogleImages(query) {
-	const imagesArray = await fetchGoogleAndReturnImagesLink(query);
-
-	content.query = query;
 	content.images = imagesArray;
 
-	console.dir(content, { depth: null });
-
-	// retorna uma promise
-	return content;
-
-	async function fetchGoogleAndReturnImagesLink(query) {
+	async function fetchGoogleAndReturnImagesLink({ query }) {
 		const response = await customSearch.cse.list({
 			auth: googleSearchCredentials.apiKey,
 			cx: googleSearchCredentials.searchEngineId,
