@@ -8,6 +8,9 @@ routes.get('/', (req, res) => {
 });
 
 routes.get('/result', (req, res) => {
+	// para otimizar o envio do servidor para o client
+	delete content.sourceContentOriginal;
+	delete content.sourceContentSanitized;
 	res.send(content);
 });
 
@@ -18,9 +21,9 @@ routes.post('/', async (req, res) => {
 	const getGoogleImages = require('./robot-image');
 	const getWikiText = require('./robot-text');
   
-  await getGoogleImages(content);
   await getWikiText(content);
-
+  await getGoogleImages(content);
+	
 	console.log(content);
 
 	res.send();
