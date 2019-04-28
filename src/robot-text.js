@@ -1,5 +1,5 @@
 const algorithmia = require('algorithmia');
-const apiKeys = require('../credentials/apiKeys.json');
+const algorithmiaApiKey = require('../credentials/algorithmia.json').apiKey;
 const sentenceBoundaryDetection = require('sbd');
 
 async function robot(content) {
@@ -8,7 +8,7 @@ async function robot(content) {
   breakContentIntoSentences(content);
 
 	async function fetchContentFromWikipedia(content) {
-		const algorithmiaAuthenticated = algorithmia(apiKeys.algorithmia);
+		const algorithmiaAuthenticated = algorithmia(algorithmiaApiKey);
 		const wikipediaAlgorithm = algorithmiaAuthenticated.algo('web/WikipediaParser/0.1.2');
 		const wikipediaResponse = await wikipediaAlgorithm.pipe(content.query);
 		const wikipediaContent = wikipediaResponse.get();
@@ -46,8 +46,12 @@ async function robot(content) {
     content.sentences = [];
 
     const sentences = sentenceBoundaryDetection.sentences(content.sourceContentSanitized);
-    sentences.forEach( sentence => {
-      content.sentences.push({
+    sentences.forEach( (sentence, index) => {
+			// limita para apenas 5 frases
+			if (index >= 5) {
+				return;	
+			}
+			content.sentences.push({
         text: sentence,
         keywords: [],
         images: []
