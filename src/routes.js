@@ -15,16 +15,16 @@ routes.get('/result', (req, res) => {
 });
 
 routes.post('/', async (req, res) => {
-  // query = texto da pesquisa
-  content.query = req.body.value;
-  
+	// query = texto da pesquisa
+	content.query = req.body.value;
+
 	const getGoogleImages = require('./robot-image');
 	const getWikiText = require('./robot-text');
-  
-  await getWikiText(content);
-  await getGoogleImages(content);
-	
-	console.log(content);
+
+	await getWikiText(content);
+	await getGoogleImages(content);
+
+	console.dir(content, { depth: null });
 
 	res.send();
 });
