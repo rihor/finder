@@ -96,7 +96,7 @@ function getContentFromServer() {
 		});
 }
 
-function displayImages({ images }) {
+function displayImages({ sentences }) {
 	/** 'slides' é um array de objetos, contendo a seguinte estrutura:
 	 * [{
 	 * 	slide: <div>,
@@ -117,12 +117,12 @@ function displayImages({ images }) {
 	 * </div>
 	 * depois de criar a estrutura passa cada slide criado para um array
 	 */
-	images.forEach(imgUrl => {
+	sentences.forEach(sentence => {
 		let slideElement = document.createElement('div');
 		slideElement.classList = 'img-slide';
 
 		let imgElement = document.createElement('img');
-		imgElement.src = imgUrl;
+		imgElement.src = sentence.images;
 		imgElement.classList = 'hidden';
 
 		slideElement.appendChild(imgElement);

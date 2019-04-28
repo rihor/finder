@@ -8,20 +8,23 @@ routes.get('/', (req, res) => {
 });
 
 routes.get('/result', (req, res) => {
+	// para otimizar o envio do servidor para o client
+	delete content.sourceContentOriginal;
+	delete content.sourceContentSanitized;
 	res.send(content);
 });
 
 routes.post('/', async (req, res) => {
-  // query = texto da pesquisa
-  content.query = req.body.value;
-  
+	// query = texto da pesquisa
+	content.query = req.body.value;
+
 	const getGoogleImages = require('./robot-image');
 	const getWikiText = require('./robot-text');
-  
-  await getGoogleImages(content);
-  await getWikiText(content);
 
-	console.log(content);
+	await getWikiText(content);
+	await getGoogleImages(content);
+
+	console.dir(content, { depth: null });
 
 	res.send();
 });
