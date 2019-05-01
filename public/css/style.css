@@ -1,197 +1,208 @@
 html,
 body {
-	padding: 0;
-	margin: 0;
-	height: 100%;
+  padding: 0;
+  margin: 0;
+  height: 100%;
 }
 button:focus {
-	outline: none;
+  outline: none;
 }
 
 body {
-	display: flex;
-	flex-direction: column;
-	height: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 header {
-	background-color: rgb(18, 15, 209);
-	z-index: 2;
-	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: rgb(18, 15, 209);
+  z-index: 2;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 .container {
-	max-width: 90%;
-	margin: 0 auto;
-	display: flex;
-	align-items: baseline;
-	justify-content: space-between;
-	align-items: center;
-	padding: 0px 10px;
-	font-family: 'Montserrat', sans-serif;
-	color: rgb(255, 175, 151);
+  max-width: 90%;
+  margin: 0 auto;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 10px;
+  font-family: "Montserrat", sans-serif;
+  color: rgb(255, 175, 151);
 }
 h1 {
-	font-size: 1.8em;
-	font-weight: 100;
-	cursor: pointer;
-	user-select: none;
+  font-size: 1.8em;
+  font-weight: 100;
+  cursor: pointer;
+  user-select: none;
 }
 ul {
-	font-size: 1em;
-	list-style: none;
+  font-size: 1em;
+  list-style: none;
 }
 li {
-	display: inline-block;
-	margin-left: 15px;
-	cursor: pointer;
-	user-select: none;
+  display: inline-block;
+  margin-left: 15px;
+  cursor: pointer;
+  user-select: none;
 }
 /* expande para cobrir todo o espaço sobrando */
 .welcome-section-style {
-	flex: 1 1 auto;
-	max-width: 90%;
-	margin: 0 auto;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+  flex: 1 1 auto;
+  max-width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .welcome {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .welcome h2 {
-	text-align: center;
-	font-size: 1.7em;
-	font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  font-size: 1.7em;
+  font-family: "Montserrat", sans-serif;
 }
 .welcome p {
-	font-family: 'Open Sans', sans-serif;
-	font-size: 1.2em;
-	text-align: center;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.2em;
+  text-align: center;
 }
 
 #bg-action {
-	flex: 0 1 auto;
-	background-color: rgb(43, 39, 228);
-	display: flex;
-	justify-content: center;
+  flex: 0 1 auto;
+  background-color: rgb(43, 39, 228);
+  display: flex;
+  justify-content: center;
 }
 .container-action {
-	margin: 20px;
-	padding: 15px;
-	background-color: #fff;
-	border-radius: 32px;
-	box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.2);
-	cursor: pointer;
+  margin: 20px;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 32px;
+  box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 .btn-start {
-	font-family: 'Montserrat', sans-serif;
-	background-color: #fff;
-	border: none;
-	color: rgb(43, 39, 228);
-	font-size: 1.2em;
-	font-weight: bold;
-	cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  background-color: #fff;
+  border: none;
+  color: rgb(43, 39, 228);
+  font-size: 1.2em;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .container-search {
-	display: flex;
+  display: flex;
 }
 #input-search {
-	font-family: 'Montserrat', sans-serif;
-	font-size: 1em;
-	border: none;
-	cursor: text;
-	color: rgb(43, 39, 228);
+  font-family: "Montserrat", sans-serif;
+  font-size: 1em;
+  border: none;
+  cursor: text;
+  color: rgb(43, 39, 228);
 }
 #input-search:focus {
-	outline: none;
+  outline: none;
 }
 #btn-search {
-	border: none;
-	cursor: pointer;
-	outline: none;
-	background: url(../images/search.png);
-	width: 24px;
-	height: 24px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  background: url(../images/search.png);
+  width: 24px;
+  height: 24px;
 }
 
 .hidden {
-	display: none;
+  display: none;
 }
 .bg-card {
-	margin: 15px;
-	border-radius: 16px;
-	box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.2);
+  margin: 15px;
+  border-radius: 16px;
+  box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.2);
 }
 .bg-info {
-	background-color: #fff;
+  background-color: #fff;
 }
 .bg-info h3 {
-	font-family: 'Montserrat', sans-serif;
-	font-weight: bold;
-	text-align: center;
-	margin-top: 20px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
 }
 .bg-info p {
-	margin: 30px 15px;
-	font-family: 'Open Sans', sans-serif;
-	font-size: 1em;
-	text-indent: 1.25em;
-	line-height: 1.5em;
+  margin: 30px 15px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1em;
+  text-indent: 1.25em;
+  line-height: 1.5em;
 }
 
 .display {
-	display: flex;
-	flex: 0 1 auto;
-	flex-wrap: wrap;
+  display: flex;
+  flex: 0 1 auto;
+  flex-wrap: wrap;
 }
 
 .img-slide {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 img {
-	max-width: 500px;	
-	max-height: 500px;
-	min-width: 500px;
-	min-height: 500px;
-	border-radius: 16px;	
+  max-width: 500px;
+  max-height: 500px;
+  min-width: 500px;
+  min-height: 500px;
+  border-radius: 16px;
 }
 #result-img-search {
-	position: relative;
+  position: relative;
 }
 .slides-control {
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .control {
-	z-index: 2;
-	cursor: pointer;
-	color: #fff;
-	background-color: rgb(255, 175, 151);
-	font-weight: bold;
-	font-size: 24px;
-	transition: 0.6s ease;
-	border: none;
-	width: 40px;
-	height: 40px;	
+  z-index: 2;
+  cursor: pointer;
+  color: #fff;
+  background-color: rgb(255, 175, 151);
+  font-weight: bold;
+  font-size: 24px;
+  transition: 0.6s ease;
+  border: none;
+  width: 40px;
+  height: 40px;
 }
 .control:active {
-	background-color: rgb(43, 39, 228);
+  background-color: rgb(43, 39, 228);
 }
 .prev {
-	border-radius: 0px 8px 8px 0px;
+  border-radius: 0px 8px 8px 0px;
 }
 .next {
-	border-radius: 8px 0px 0px 8px;
+  border-radius: 8px 0px 0px 8px;
+}
+
+/* mobile */
+@media (min-width: 320px) and (max-width: 480px) {
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    min-width: 300px;
+    min-height: 300px;
+    border-radius: 16px;
+  }
 }
