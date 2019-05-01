@@ -2,7 +2,7 @@
 
 Simple page that uses the Google's Custom Search API.
 
-I plan to use heroku, so I can have the page live so anyone can see without having trouble: https://www.heroku.com
+The project is now online on Heroku: https://explore-zawarudo.herokuapp.com/
 
 ## Getting Started
 
