@@ -1,4 +1,5 @@
 # Explore The World
+![GitHub](https://img.shields.io/github/license/rihor/page-explore-world.svg)
 
 Simple page that uses the Google's Custom Search API.
 
@@ -10,10 +11,9 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
 You will need Node.js: https://nodejs.org/en/
 
-This will make sure you have node installed
+Run this command so you make sure you have node on your machine.
 ```
 node -v
 npm -v
@@ -21,18 +21,14 @@ npm -v
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-You need to install the project dependencies.
-
+Use this command to install all the project dependencies:
 ```
 npm install
 ```
 
 ## Deployment
 
-After installing that, you just need to:
-
+After installing the dependencies, you just need to run:
 ```
 npm run dev
 ```
