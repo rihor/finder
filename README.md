@@ -1,5 +1,6 @@
 # Explore The World
 ![GitHub](https://img.shields.io/github/license/rihor/page-explore-world.svg)
+[![Build Status](https://travis-ci.org/rihor/page-explore-world.svg?branch=master)](https://travis-ci.org/rihor/page-explore-world)
 
 Simple page that uses the Google's Custom Search API.
 
