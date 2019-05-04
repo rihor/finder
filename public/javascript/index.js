@@ -26,6 +26,11 @@ actionContainer.addEventListener('click', startButtonClick);
 
 // pega o input, envia para o servidor e
 btnSearch.addEventListener('click', searchEvent);
+inputSearch.addEventListener('keyup', event => {
+  if (event.key === 'Enter') {
+    btnSearch.click();
+  }
+});
 
 // start now button
 function startButtonClick() {
