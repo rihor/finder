@@ -2,35 +2,38 @@ const googleCredentials = require('../credentials/google.json');
 const google = require('googleapis').google;
 const customSearch = google.customsearch('v1');
 
-async function getGoogleImages(content) {
-	const imagesArray = await fetchGoogleAndReturnImagesLink(content);
+async function getGoogleImages({ sentences }) {
+    // cada frase recebe um link de imagem
+    for (const sentence of sentences) {
+        const imgLink = await fetchGoogleAndReturnImagesLink(sentence);
+        sentence.images.push(imgLink);
+    }
 
-	content.sentences.forEach((sentence, index) => {
-		sentence.images = imagesArray[index];
-	});
+    async function fetchGoogleAndReturnImagesLink({ keywords }) {
+        const query = keywords.join(' ');
 
-	async function fetchGoogleAndReturnImagesLink({ query }) {
-		const response = await customSearch.cse.list({
-			auth: googleCredentials.apiKey,
-			cx: googleCredentials.searchEngineId,
-			q: query,
-			searchType: 'image',
-			num: 5,
-		});
+        const response = await customSearch.cse.list({
+            auth: googleCredentials.apiKey,
+            cx: googleCredentials.searchEngineId,
+            q: query,
+            searchType: 'image',
+            num: 1,
+        });
 
-		const items = response.data.items;
+        // const items = response.data.items;
+        const { items } = response.data;
 
-		if (items == undefined) {
-			return items;
-		}
+        if (items === undefined) {
+            return undefined;
+        }
 
-		// cria um array com os links achados
-		const imagesUrl = items.map(item => {
-			return item.link;
-		});
+        // cria um array com os links achados
+        const imagesUrl = items.map(item => {
+            return item.link;
+        });
 
-		return imagesUrl;
-	}
+        return imagesUrl;
+    }
 }
 
 module.exports = getGoogleImages;
