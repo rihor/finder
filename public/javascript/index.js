@@ -215,5 +215,37 @@ function translationFlagHandler(flagShowing) {
     languageSelected = name;
 
     containerOfFlags.classList = 'hidden';
+    setLanguage(languageSelected);
+  }
+
+  function setLanguage(languageSelected) {
+    let input = {
+      chosenLanguage: languageSelected,
+    };
+
+    fetch('/language', {
+      method: 'POST',
+      headers: jsonHeaders,
+      body: JSON.stringify(input),
+    })
+      .then(() => {        
+        getAndApplyTranslation();
+      })
+      .catch(error => {
+        console.warn('Failed changing page language!: ', error);
+      });
+  }
+
+  function getAndApplyTranslation() {
+    fetch('/translation')
+    .then(response => response.json())
+    .then(translation => {
+      // aplica as traduções
+      document.querySelector('title').innerHTML = translation.title;
+      document.querySelector('#welcome-section h2').innerHTML = translation.subTitle;
+      document.querySelector('#welcome-section p').innerHTML = translation.instructions;
+      document.querySelector('.btn-start').innerHTML = translation.button;
+      document.querySelector('header nav a').innerHTML = translation.contact;      
+    }).catch(error => console.warn(error));
   }
 }
