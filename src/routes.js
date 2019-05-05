@@ -15,8 +15,11 @@ routes.get('/result', (req, res) => {
 });
 
 routes.post('/', async (req, res) => {
-	// query = texto da pesquisa
-	content.query = req.body.value;
+	
+	const {value, language} = req.body;
+	
+	content.query = value;
+	content.language = language;
 
 	const getGoogleImages = require('./robot-image');
 	const getWikiText = require('./robot-text');
