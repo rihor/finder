@@ -1,3 +1,7 @@
+const bodyElement = document.querySelector('body');
+const translationFlag = document.querySelector('#flag-container img');
+const containerOfFlags = document.getElementById('flag-options');
+
 // <section id="welcome-section" class="welcome-section-style">
 const welcomeSection = document.getElementById('welcome-section');
 
@@ -22,6 +26,8 @@ const btnNextSlide = document.getElementById('next');
 // determina uso de json
 const jsonHeaders = new Headers({ 'Content-Type': 'application/json' });
 
+let languageSelected = 'en';
+
 actionContainer.addEventListener('click', startButtonClick);
 
 // pega o input, envia para o servidor e
@@ -31,6 +37,8 @@ inputSearch.addEventListener('keyup', event => {
     btnSearch.click();
   }
 });
+
+translationFlagHandler(translationFlag);
 
 // start now button
 function startButtonClick() {
@@ -62,16 +70,17 @@ function showInfoSection() {
 }
 
 function searchEvent() {
-  // objeto com o texto do input
-  const searchInputValue = {
+  // objeto que será passado para o server
+  const searchInputs = {
     value: inputSearch.value,
+    language: languageSelected,
   };
 
   // envia o texto para o servidor
   fetch('/', {
     method: 'POST',
     headers: jsonHeaders,
-    body: JSON.stringify(searchInputValue),
+    body: JSON.stringify(searchInputs),
   })
     .then(() => {
       getContentFromServer();
@@ -127,6 +136,7 @@ function displaySearchResult({ sentences }) {
   // <div> <img src="..."/> </div>
   function createImageContainer({ images }) {
     let image = document.createElement('img');
+    image.classList.add('slide-img');
     image.src = images;
 
     let imageContainer = document.createElement('div');
@@ -170,5 +180,72 @@ function displaySearchResult({ sentences }) {
       }
     }
     showSlide(indexShowing);
+  }
+}
+
+function translationFlagHandler(flagShowing) {
+  const languageArray = ['en', 'pt'];
+
+  flagShowing.addEventListener('click', showFlagOptions);
+
+  function showFlagOptions() {
+    containerOfFlags.classList = 'flag-options';
+
+    clearFlagList(containerOfFlags);
+
+    for (const flagImage of languageArray) {
+      let flagElement = document.createElement('img');
+      flagElement.addEventListener('click', flagSelected);
+      flagElement.src = `../images/flag_${flagImage}.png`;
+      flagElement.name = flagImage;
+      containerOfFlags.appendChild(flagElement);
+    }
+  }
+
+  function clearFlagList(container) {
+    while (container.firstChild) {
+      container.removeChild(container.firstChild);
+    }
+  }
+
+  function flagSelected(event) {
+    let { src, name } = event.target;
+
+    flagShowing.src = src;
+    languageSelected = name;
+
+    containerOfFlags.classList = 'hidden';
+    setLanguage(languageSelected);
+  }
+
+  function setLanguage(languageSelected) {
+    let input = {
+      chosenLanguage: languageSelected,
+    };
+
+    fetch('/language', {
+      method: 'POST',
+      headers: jsonHeaders,
+      body: JSON.stringify(input),
+    })
+      .then(() => {        
+        getAndApplyTranslation();
+      })
+      .catch(error => {
+        console.warn('Failed changing page language!: ', error);
+      });
+  }
+
+  function getAndApplyTranslation() {
+    fetch('/translation')
+    .then(response => response.json())
+    .then(translation => {
+      // aplica as traduções
+      document.querySelector('title').innerHTML = translation.title;
+      document.querySelector('#welcome-section h2').innerHTML = translation.subTitle;
+      document.querySelector('#welcome-section p').innerHTML = translation.instructions;
+      document.querySelector('.btn-start').innerHTML = translation.button;
+      document.querySelector('header nav a').innerHTML = translation.contact;      
+    }).catch(error => console.warn(error));
   }
 }
