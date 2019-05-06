@@ -17,6 +17,9 @@ const btnSearch = document.getElementById('btn-search');
 // <section id="info-section" class="hidden">
 const infoSection = document.getElementById('info-section');
 
+// <div id="loading-screen" class="hidden"></div>
+const loadingScreen = document.getElementById('loading-screen');
+
 // <div id="slides-container" class="slides-container"></div>
 const slidesContainer = document.getElementById('slides-container');
 const resultSearch = document.getElementById('result-search');
@@ -43,8 +46,7 @@ translationFlagHandler(translationFlag);
 // start now button
 function startButtonClick() {
   closeWelcomeSection();
-  changeSearchContainer();
-  showInfoSection();
+  changeSearchContainer();  
   actionContainer.removeEventListener('click', startButtonClick);
 }
 
@@ -64,12 +66,20 @@ function changeSearchContainer() {
 }
 
 // a seção de informações aparece
-function showInfoSection() {
+function showInfoSection(show = true) {
   // container de informação aparece
-  infoSection.classList = 'display';
+  infoSection.classList = show ? 'display' : 'hidden';
+}
+
+function showLoadingScreen(show = true) {
+  loadingScreen.classList = show ? 'loading' : 'hidden';
 }
 
 function searchEvent() {
+  removeSlides();
+  showLoadingScreen();
+  showSlideControls(false);
+
   // objeto que será passado para o server
   const searchInputs = {
     value: inputSearch.value,
@@ -95,6 +105,7 @@ function getContentFromServer() {
   fetch('/result')
     .then(response => response.json())
     .then(content => {
+      showLoadingScreen(false);
       displaySearchResult(content);
     })
     .catch(error => {
@@ -109,10 +120,7 @@ function displaySearchResult({ sentences }) {
   btnPrevSlide.addEventListener('click', moveSlide);
   btnNextSlide.addEventListener('click', moveSlide);
 
-  // remove todas os slides
-  while (slidesContainer.firstChild) {
-    slidesContainer.removeChild(slidesContainer.firstChild);
-  }
+  removeSlides();  
 
   sentences.forEach(sentence => {
     let imageContainer = createImageContainer(sentence);
@@ -129,10 +137,9 @@ function displaySearchResult({ sentences }) {
   });
 
   showSlide(indexShowing);
-  infoSection.classList.add('display');
-  btnPrevSlide.classList += ' display';
-  btnNextSlide.classList += ' display';
-
+  showInfoSection();
+  showSlideControls();
+  
   // <div> <img src="..."/> </div>
   function createImageContainer({ images }) {
     let image = document.createElement('img');
@@ -180,6 +187,27 @@ function displaySearchResult({ sentences }) {
       }
     }
     showSlide(indexShowing);
+  }
+}
+
+function showSlideControls(show = true) {
+  if(show) {
+    btnPrevSlide.classList.remove('hidden');
+    btnNextSlide.classList.remove('hidden');
+    btnPrevSlide.classList.add('display');
+    btnNextSlide.classList.add('display');
+  }else {
+    btnPrevSlide.classList.remove('display');
+    btnNextSlide.classList.remove('display');
+    btnPrevSlide.classList.add('hidden');
+    btnNextSlide.classList.add('hidden');
+  }
+}
+
+function removeSlides() {
+  // remove todas os slides
+  while (slidesContainer.firstChild) {
+    slidesContainer.removeChild(slidesContainer.firstChild);
   }
 }
 
@@ -249,6 +277,7 @@ function translationFlagHandler(flagShowing) {
         document.querySelector('title').innerHTML = translation.title;
         document.querySelector('header nav a').innerHTML = translation.contact;
         inputSearch.placeholder = translation.inputPlaceholder;
+        loadingScreen.querySelector('p').innerHTML = translation.loading;
       })
       .catch(error => console.warn(error));
   }
