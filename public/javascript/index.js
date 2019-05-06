@@ -228,7 +228,7 @@ function translationFlagHandler(flagShowing) {
       headers: jsonHeaders,
       body: JSON.stringify(input),
     })
-      .then(() => {        
+      .then(() => {
         getAndApplyTranslation();
       })
       .catch(error => {
@@ -238,14 +238,18 @@ function translationFlagHandler(flagShowing) {
 
   function getAndApplyTranslation() {
     fetch('/translation')
-    .then(response => response.json())
-    .then(translation => {
-      // aplica as traduções
-      document.querySelector('title').innerHTML = translation.title;
-      document.querySelector('#welcome-section h2').innerHTML = translation.subTitle;
-      document.querySelector('#welcome-section p').innerHTML = translation.instructions;
-      document.querySelector('.btn-start').innerHTML = translation.button;
-      document.querySelector('header nav a').innerHTML = translation.contact;      
-    }).catch(error => console.warn(error));
+      .then(response => response.json())
+      .then(translation => {
+        // aplica as traduções
+        document.querySelector('#welcome-section h2').innerHTML =
+          translation.subTitle;
+        document.querySelector('#welcome-section p').innerHTML =
+          translation.instructions;
+        startButton.innerHTML = translation.button;
+        document.querySelector('title').innerHTML = translation.title;
+        document.querySelector('header nav a').innerHTML = translation.contact;
+        inputSearch.placeholder = translation.inputPlaceholder;
+      })
+      .catch(error => console.warn(error));
   }
 }
