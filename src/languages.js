@@ -8,7 +8,8 @@ const brLang = {
     'Apenas clique em começar e insira alguma coisa, a página então irá procurar sobre o assunto!',
   button: 'Começar',
   contact: 'Contato',
-  inputPlaceholder: 'Insira qualquer coisa...'
+  inputPlaceholder: 'Insira qualquer coisa...',
+  loading: 'Carregando...'
 };
 
 const enLang = {
@@ -19,7 +20,8 @@ const enLang = {
     'Just click start and enter anything on the input, the page will search it and show all about to you!',
   button: 'Start now',
   contact: 'Contact',
-  inputPlaceholder: 'Enter anything...'
+  inputPlaceholder: 'Enter anything...',
+  loading: 'Loading...'
 };
 
 async function fetchLanguage(language) {
