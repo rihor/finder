@@ -4,7 +4,7 @@
 
 Simple page that uses the Google's Custom Search API.
 
-The project is now online on Heroku: https://explore-zawarudo.herokuapp.com/
+The project is now online on Heroku: https://finder-rihor.herokuapp.com/
 
 ## Getting Started
 
