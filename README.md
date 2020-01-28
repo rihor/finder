@@ -1,4 +1,4 @@
-# Explore The World
+# Finder
 ![GitHub](https://img.shields.io/github/license/rihor/page-explore-world.svg)
 [![Build Status](https://travis-ci.org/rihor/page-explore-world.svg?branch=master)](https://travis-ci.org/rihor/page-explore-world)
 
@@ -20,27 +20,15 @@ node -v
 npm -v
 ```
 
-### Installing
+## Running project
 
-Use this command to install all the project dependencies:
 ```
 npm install
-```
 
-## Deployment
-
-After installing the dependencies, you just need to run:
-```
 npm run dev
 ```
 
-Now that you have the project running.
-
-Just type in your browser:
-
-```
-localhost:3000
-```
+Now in your browser enter this url: `localhost:3000`
 
 ## Acknowledgments
 
